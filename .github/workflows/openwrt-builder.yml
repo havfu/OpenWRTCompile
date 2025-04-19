@@ -12,10 +12,12 @@
 
 name: OpenWrt Builder
 
+
 on:
   repository_dispatch:
   workflow_dispatch:
-
+  watch: started
+   
 env:
   REPO_URL: https://github.com/havfu/immortalwrt-mt798x-24.10
   REPO_BRANCH: openwrt-23.05
@@ -31,7 +33,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
-
+    if: github.event.repository.owner.id == github.event.sender.id
+    
     steps:
     - name: Checkout
       uses: actions/checkout@main
