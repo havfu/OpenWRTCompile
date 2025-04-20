@@ -26,11 +26,12 @@ env:
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
+  SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  SSH_ACTIONS: true
+  
 
 jobs:
   build:
@@ -54,6 +55,13 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
+
+    - name: SSH connection to Actions
+      uses: P3TERX/debugger-action@master
+      if: env.SSH_ACTIONS == 'true'
+
+        
+
     - name: Clone source code
       working-directory: /workdir
       run: |
@@ -68,9 +76,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-   - name: SSH connection to Actions
-        uses: P3TERX/debugger-action@master
-        if: env.SSH_ACTIONS == 'true'
+  
         
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
