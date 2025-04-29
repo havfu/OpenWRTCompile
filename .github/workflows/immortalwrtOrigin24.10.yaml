@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: immortalwrtOrigin-23.05
+name: immortalwrtOrigin-24.10
 
 on:
   repository_dispatch:
