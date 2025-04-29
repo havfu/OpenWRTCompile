@@ -140,7 +140,7 @@ jobs:
           prefix: ${{ github.workspace }}/openwrt
 
     - name: Update feeds
-      run: cd openwrt &&sudo echo "src-git mtk_openwrt_feed https://git01.mediatek.com/openwrt/feeds/mtk-openwrt-feeds" >> feeds.conf.default && sudo echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default" && ./scripts/feeds update -a 
+      run: cd openwrt && sudo echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default" && ./scripts/feeds update -a 
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a &&sudo  rm -rf feeds/packages/lang/golang  && sudo find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f && find ./ | grep Makefile | grep mosdns | xargs rm -f  &&  sudo git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang && sudo git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns && sudo git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata 
