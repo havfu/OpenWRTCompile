@@ -22,7 +22,7 @@ on:
         default: 'true'
 
 env:
-  REPO_URL: https://github.com/havfu/immortalwrt-mt798x-24.10
+  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-24.10
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
