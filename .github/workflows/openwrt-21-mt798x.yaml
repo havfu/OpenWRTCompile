@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt21 Builder
+name: openwrt-21-mt798x Builder
 
 on:
   repository_dispatch:
