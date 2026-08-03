@@ -129,6 +129,7 @@ jobs:
       run: |
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        sudo apt install -y libncurses-dev
         
 
     - name: Load custom feeds
